@@ -1,0 +1,62 @@
+<md-toolbar flex="100">EASEBOOKING</md-toolbar>
+<md-content flex class="content">
+    <md-card ng-show="!dateChosen">
+     <form name="dateform" ng-submit="select()">
+         <label>Choose a Date</label>
+    <md-input-container>
+        <select id="search" ng-model="book.date" ng-options="date for date in dates" required ></select>
+
+     </md-input-container>
+         <button class="btn btn-info" type="submit">Submit</button>
+     </form>
+</md-content>
+
+<md-content flex class="content">
+
+    </md-card>
+        <md-card>
+    <div class="header">Book It</div>
+
+    <form name="bookit" ng-submit="sbmt()">
+        <p>Date: {{book.date}}</p>
+        <md-input-container>
+            <label>Name</label>
+<input type="text" name="uname" ng-model="book.name" required>
+            <div ng-messages="bookit.uname.$error">
+                <div ng-message="required">This is required!</div>
+            </div>
+        </md-input-container>
+        <md-input-container>
+            <label>Age</label>
+<input type="number" name="age" ng-model="book.age"  required>
+            <div ng-messages="bookit.age.$error">
+                <div ng-message="required">This is required!</div>
+            </div>
+         </md-input-container>
+        <md-input-container>
+            <label>Weight</label>
+<input type="number" name="weight" ng-model="book.weight"  required>
+            <div ng-messages="bookit.weight.$error">
+                <div ng-message="required">This is required!</div>
+            </div>
+         </md-input-container>
+        <md-input-container>
+            <label>Chronic Health Problems</label>
+<input type="text" ng-model="book.problems" listprobs required>
+            <div ng-messages="bookit.weight.$error">
+                <div ng-message="required">This is required!</div>
+            </div>
+        </md-input-container>
+        <label>
+            <input type="radio" ng-model="book.gender" value="male" style="vertical-align: middle">
+            Male
+        </label>
+        <label>
+            <input type="radio" ng-model="book.gender" value="female" style="vertical-align: middle">
+            Female
+        </label>
+<button id="bookit" class="btn btn-info" type="submit" ng-disabled="!dateChosen">Submit</button>
+    </form>
+        </md-card>
+</md-content>
+
